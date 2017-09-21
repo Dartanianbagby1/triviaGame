@@ -2,7 +2,7 @@
 GETTING STARTED:
 
 
-Please find my page at:  https://dartanianbagby1.github.io/trivia/.
+Please find my page at:  https://dartanianbagby1.github.io/triviaGame/.
 
 a. This project was a simple game implemented with HTML, css, and JQuery. The game is a trivia game wherein the player attempts to answer each question correctly, given three choices as responses to each queation.
 
