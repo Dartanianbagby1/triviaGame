@@ -63,10 +63,10 @@ $(document).ready(function() {
     var aright = 0;
     var awrong = 0;
 
-    var imgs =["assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif","assets/img/3af174fd3aa9522cf8eead642f9b2ba35a7e029c_hq.gif","assets/img/100w_d.gif","assets/img/200w_d.gif","assets/img/kpop_gifs.gif","assets/img/tenor.gif","assets/img/tumblr_inline_n1un0pB9MR1rcrx7x.gif","assets/img/X13qo.gif","assets/img/YGLOVE.gif","assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif","assets/img/200w_d.gif","assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif","assets/img/3af174fd3aa9522cf8eead642f9b2ba35a7e029c_hq.gif","assets/img/100w_d.gif","assets/img/200w_d.gif","assets/img/kpop_gifs.gif","assets/img/tenor.gif","assets/img/tumblr_inline_n1un0pB9MR1rcrx7x.gif","assets/img/X13qo.gif","assets/img/YGLOVE.gif"];
+    var imgs = ["assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif", "assets/img/3af174fd3aa9522cf8eead642f9b2ba35a7e029c_hq.gif", "assets/img/100w_d.gif", "assets/img/200w_d.gif", "assets/img/kpop_gifs.gif", "assets/img/tenor.gif", "assets/img/tumblr_inline_n1un0pB9MR1rcrx7x.gif", "assets/img/X13qo.gif", "assets/img/YGLOVE.gif", "assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif", "assets/img/200w_d.gif", "assets/img/tumblr_inline_ms7haongkD1qz4rgp.gif", "assets/img/3af174fd3aa9522cf8eead642f9b2ba35a7e029c_hq.gif", "assets/img/100w_d.gif", "assets/img/200w_d.gif", "assets/img/kpop_gifs.gif", "assets/img/tenor.gif", "assets/img/tumblr_inline_n1un0pB9MR1rcrx7x.gif", "assets/img/X13qo.gif", "assets/img/YGLOVE.gif"];
 
-   
-        
+
+
 
 
 
@@ -86,24 +86,25 @@ $(document).ready(function() {
 
     function decrement() {
         timer--;
-     $(".timer").html("<h2>You have " + timer + " seconds.</h2>")
+        $(".timer").html("<h2>You have " + timer + " seconds.</h2>")
 
         if (timer <= 0) {
-            wrong();     
+            wrong();
+            stop();
         }
-       
     }
-    function next(){
-     if(i >= 8) {
+
+    function next() {
+        if (i >= 8) {
             yourscore();
-        }else{
+        } else {
             run();
         }
     }
 
     function stop() {
         clearInterval(intervalId);
-          
+
     }
 
     function yourscore() {
@@ -115,76 +116,81 @@ $(document).ready(function() {
         $(".question").text("you got " + aright + " right, and " + awrong + " wrong.");
         $(".answer").empty();
         $(".info").empty();
-         $(".family").removeClass("family").addClass("start").html("Try again!");
-         i = 0;
-         j = 0;
-         aright = 0;
-         awrong = 0;
+        $(".family").removeClass("family").addClass("start").html("Try again!");
+        i = 0;
+        j = 0;
+        aright = 0;
+        awrong = 0;
     }
+
     function wrong() {
-         i++;
-         j++;
-         awrong++;
-         
-        infoWrong();   
+        i++;
+        j++;
+        awrong++;
+
+        infoWrong();
         $(".a1").text("Sorry! Wrong answer");
     }
+
     function right() {
         i++;
         j++;
         aright++;
-       
+
         info();
         $(".a1").text("Right answer!");
 
     }
-    function info(){
-       
+
+    function info() {
+
         $(".answer").empty();
         $(".timer").empty();
         $(".question").empty();
         var img = $("<img>");
         img.addClass("responsive")
-        img.attr("src", imgs[i]);
+        img.attr("src", imgs[j]);
         img.outerWidth(500).outerHeight(350);
-   
+
         $(".question").prepend(img);
-         setTimeout(noInfo, 4000); 
+        setTimeout(noInfo, 4000);
     }
-    function infoWrong(){
+
+    function infoWrong() {
 
         $(".answer").empty();
         $(".timer").empty();
         $(".question").empty();
-       var img = $("<img>");
+        var img = $("<img>");
         img.addClass("responsive")
         img.attr("src", imgs[9]);
         img.outerWidth(500).outerHeight(350);
-   
+
         $(".question").prepend(img);
-         setTimeout(noInfo, 4000);     
+        setTimeout(noInfo, 4000);
     }
-    function noInfo(){
-      next();  
-   }
+
+    function noInfo() {
+        next();
+    }
 
 
     $(".answer ").on("click", function() {
         clearInterval(intervalId);
         $(".timer").empty();
         if ($(this).text() === yourQuestion[i].answer) {
-        	
+
             right();
-            
+
             console.log("great!");
-           
+
         } else {
-        	
+
             wrong();
-            
-           
+
+
             console.log("Wrong answer")
-        }   
+        }
 
     });
 
@@ -199,7 +205,7 @@ $(document).ready(function() {
         run();
     });
 
-    
+
 
 
 
